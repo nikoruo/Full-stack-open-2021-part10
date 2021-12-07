@@ -1,9 +1,18 @@
+import { Formik } from 'formik';
 import React from 'react';
-
-import Text from './Text';
+import FormikTextInput from './FormikTextInput';
 
 const SignIn = () => {
-  return <Text>The sign in view</Text>;
+
+    /*const onSubmit = (values) => {
+        console.log(values);
+      };*/
+
+    return (
+        <Formik>
+            <FormikTextInput name="username" placeholder="Username"/>    
+        </Formik>   
+    );
 };
 
 export default SignIn;
