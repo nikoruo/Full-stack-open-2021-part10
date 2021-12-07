@@ -1,7 +1,11 @@
 import React from 'react';
-import { Image, Text, View, StyleSheet } from 'react-native';
+import { Image, View, StyleSheet } from 'react-native';
+import Text from './Text';
 
 const styles = StyleSheet.create({
+    container: {
+        padding: 20,
+      },
     ownerAvatar: {
         width: 50,
         height: 50
@@ -11,9 +15,9 @@ const styles = StyleSheet.create({
 
 const RepositoryItem = ({repo}) => {
     return (
-      <View>
+      <View style={styles.container}>
           <Image style={styles.ownerAvatar} source={{uri: repo.ownerAvatarUrl}} />
-          <Text>Full name: {repo.fullName}</Text>
+          <Text color="primary" fontWeight="bold" fontSize="subheading">Full name: {repo.fullName}</Text>
           <Text>Description: {repo.description}</Text>
           <Text>Language: {repo.language}</Text>
           <Text>Stars: {repo.stargazersCount}</Text>
