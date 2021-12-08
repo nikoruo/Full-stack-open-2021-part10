@@ -23,11 +23,15 @@ const styles = StyleSheet.create({
       letterSpacing: 0.25,
       color: 'white',
     },
+    form: {
+        backgroundColor: theme.colors.repositoryItem,
+        paddingBottom: 15
+    }
   });
 
 const SignInForm = ({handleSubmit}) => {
     return(
-        <View>
+        <View style={styles.form}>
             <FormikTextInput name="username" placeholder="Username"/>    
             <FormikTextInput secureTextEntry name="password" placeholder="Password"/>
             <Pressable style={styles.button} onPress={handleSubmit}>
