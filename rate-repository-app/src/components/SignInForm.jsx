@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
       elevation: 3,
       backgroundColor: theme.colors.primary,
       marginLeft: 15,
-      marginRight: 15
+      marginRight: 15,
+      marginTop: 10
     },
     text: {
       fontSize: 16,

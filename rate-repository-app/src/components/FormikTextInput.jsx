@@ -7,7 +7,10 @@ import Text from './Text';
 
 const styles = StyleSheet.create({
   errorText: {
-    marginTop: 5,
+    marginTop: 1,
+    color: "red",
+    fontWeight: "bold",
+    paddingLeft: 15
   },
 });
 
