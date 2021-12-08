@@ -9,7 +9,7 @@ const SignIn = () => {
       };
 
     return (
-        <Formik styles={{backgroundColor: "blue"}}
+        <Formik
         initialValues={{
             username: "",
             password: ""
