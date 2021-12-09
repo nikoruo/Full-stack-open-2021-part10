@@ -20,3 +20,13 @@ export const GET_REPOSITORIES = gql`
     }
   }
 `;
+
+//tarkistetaan onko kirjautunut
+export const CHECK_AUTH = gql`
+  query checkAuth{
+    authorizedUser {
+      id
+      username
+    }
+  }
+`;
