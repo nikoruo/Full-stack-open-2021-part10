@@ -1,5 +1,7 @@
 import React from 'react';
-import { Image, View, StyleSheet } from 'react-native';
+import { Image, View, StyleSheet, Pressable } from 'react-native';
+import * as Linking from 'expo-linking';
+
 import theme from '../theme';
 import StatsItem from './StatsItem';
 import Text from './Text';
@@ -35,11 +37,42 @@ const styles = StyleSheet.create({
     },
     space: {
         paddingTop: 5
-    }
+    },
+    button: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 12,
+      paddingHorizontal: 32,
+      borderRadius: 4,
+      elevation: 3,
+      backgroundColor: theme.colors.primary,
+      marginLeft: 15,
+      marginRight: 15,
+      marginTop: 10
+    },
+    text: {
+      fontSize: 16,
+      lineHeight: 21,
+      fontWeight: 'bold',
+      letterSpacing: 0.25,
+      color: 'white',
+    },
 });
-
+import { useParams } from 'react-router-native';
+import useRepository from '../hooks/useRepository';
 const RepositoryItem = ({repo}) => {
-    return (
+  
+  const { id } = useParams();
+  
+  if(id){
+    const { repository, loading } = useRepository({id});
+    if(loading){
+      return <View/>;
+    }
+    repo=repository;
+  }  
+
+  return (
       <View style={styles.container}>
           <View style={{flexDirection: 'row'}}>
             <Image style={styles.ownerAvatar} source={{uri: repo.ownerAvatarUrl}} />
@@ -57,6 +90,10 @@ const RepositoryItem = ({repo}) => {
             <StatsItem testID="reviewCount" name="Reviews" count={repo.reviewCount}/>
             <StatsItem testID="ratingAverage" name="Rating" count={repo.ratingAverage}/>
           </View>
+          {id ? <Pressable style={styles.button} onPress={() => Linking.openURL(repo.url)}>
+                  <Text style={styles.text}>Open in GitHub</Text>    
+                </Pressable> 
+             : <></>}
       </View>
     );
   };
