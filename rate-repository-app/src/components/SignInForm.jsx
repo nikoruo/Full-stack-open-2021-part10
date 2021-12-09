@@ -33,9 +33,9 @@ const styles = StyleSheet.create({
 const SignInForm = ({handleSubmit}) => {
     return(
         <View style={styles.form}>
-            <FormikTextInput name="username" placeholder="Username"/>    
-            <FormikTextInput secureTextEntry name="password" placeholder="Password"/>
-            <Pressable style={styles.button} onPress={handleSubmit}>
+            <FormikTextInput testID="usernameField" name="username" placeholder="Username"/>    
+            <FormikTextInput testID="passwordField" secureTextEntry name="password" placeholder="Password"/>
+            <Pressable style={styles.button} onPress={handleSubmit} testID="submitButton">
                 <Text style={styles.text}>Sign in</Text>    
             </Pressable> 
         </View>

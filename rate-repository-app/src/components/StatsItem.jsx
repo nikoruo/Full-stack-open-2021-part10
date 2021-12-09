@@ -15,12 +15,12 @@ function kFormatter(num) {
     return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num);
 }
 
-const StatsItem = ({name, count}) => {
+const StatsItem = ({name, count, testID}) => {
     const inThousands = kFormatter(count);
     
     return (
       <View style={styles.flexContainerRow}>
-          <Text fontWeight="bold">{inThousands}</Text>
+          <Text testID={testID} fontWeight="bold">{inThousands}</Text>
           <Text color="textSecondary">{name}</Text>          
       </View>
     );

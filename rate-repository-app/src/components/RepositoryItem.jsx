@@ -44,18 +44,18 @@ const RepositoryItem = ({repo}) => {
           <View style={{flexDirection: 'row'}}>
             <Image style={styles.ownerAvatar} source={{uri: repo.ownerAvatarUrl}} />
             <View style={styles.flexContainerCol}>
-                <Text fontWeight="bold" fontSize="subheading">{repo.fullName}</Text>
-                <Text style={styles.space} color="textSecondary">{repo.description}</Text>
+                <Text testID="fullName" fontWeight="bold" fontSize="subheading">{repo.fullName}</Text>
+                <Text testID="description" style={styles.space} color="textSecondary">{repo.description}</Text>
                 <View style={styles.languageBox}>
-                    <Text fontWeight="bold" style={styles.language}>{repo.language}</Text>
+                    <Text testID="language" fontWeight="bold" style={styles.language}>{repo.language}</Text>
                 </View>
             </View>
           </View>
           <View style={styles.flexContainerRow}>
-            <StatsItem name="Stars" count={repo.stargazersCount}/>
-            <StatsItem name="Forks" count={repo.forksCount}/>
-            <StatsItem name="Reviews" count={repo.reviewCount}/>
-            <StatsItem name="Rating" count={repo.ratingAverage}/>
+            <StatsItem testID="stargazersCount" name="Stars" count={repo.stargazersCount}/>
+            <StatsItem testID="forksCount" name="Forks" count={repo.forksCount}/>
+            <StatsItem testID="reviewCount" name="Reviews" count={repo.reviewCount}/>
+            <StatsItem testID="ratingAverage" name="Rating" count={repo.ratingAverage}/>
           </View>
       </View>
     );
