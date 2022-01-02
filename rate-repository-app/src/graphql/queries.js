@@ -34,7 +34,21 @@ export const GET_REPOSITORY = gql`
       forksCount,
       reviewCount,
       ratingAverage,
-      url
+      url,
+      reviews {
+        edges {
+          node {
+            id
+            text
+            rating
+            createdAt
+            user {
+              id
+              username
+            }
+          }
+        }
+      }
     }
   }
 `;

@@ -17,7 +17,8 @@ const styles = StyleSheet.create({
       },
       container: {
         padding: 20,
-        backgroundColor: theme.colors.repositoryItem
+        backgroundColor: theme.colors.repositoryItem,
+        marginBottom: 10
       },
     ownerAvatar: {
         width: 50,
@@ -73,7 +74,8 @@ const RepositoryItem = ({repo}) => {
   }  
 
   return (
-      <View style={styles.container}>
+      <View>
+        <View style={styles.container}>
           <View style={{flexDirection: 'row'}}>
             <Image style={styles.ownerAvatar} source={{uri: repo.ownerAvatarUrl}} />
             <View style={styles.flexContainerCol}>
@@ -94,6 +96,7 @@ const RepositoryItem = ({repo}) => {
                   <Text style={styles.text}>Open in GitHub</Text>    
                 </Pressable> 
              : <></>}
+        </View>
       </View>
     );
   };

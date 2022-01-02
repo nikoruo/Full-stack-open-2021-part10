@@ -4,7 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-native';
 
 import theme from '../theme';
 import AppBar from './AppBar';
-import RepositoryItem from './RepositoryItem';
+import RepositoryPage from './RepositoryPage';
 import RepositoryList from './RepositoryList';
 import SignIn from './SignIn';
 import SignOut from './SignOut';
@@ -32,7 +32,7 @@ const Main = () => {
           <SignOut />
         </Route>      
         <Route path="/repositories/:id" exact>
-          <RepositoryItem />
+          <RepositoryPage />
         </Route>  
         <Redirect to="/" />
       </Switch>
