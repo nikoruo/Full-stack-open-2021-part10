@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
       color: 'white',
     },
 });
+
 import { useParams } from 'react-router-native';
 import useRepository from '../hooks/useRepository';
 const RepositoryItem = ({repo}) => {
