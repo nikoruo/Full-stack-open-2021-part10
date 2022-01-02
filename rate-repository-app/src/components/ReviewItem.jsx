@@ -12,10 +12,7 @@ const styles = StyleSheet.create({
       },
       flexContainerCol: {
         flexDirection: "column",
-        color: "white",
-        justifyContent: "space-around",
-        paddingTop: 5,
-        paddingLeft: 15,
+        paddingLeft: 10,
         width: 0,
         flexGrow: 1,
         flex: 1,
