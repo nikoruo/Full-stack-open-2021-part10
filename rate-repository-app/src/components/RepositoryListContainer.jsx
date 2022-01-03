@@ -1,6 +1,8 @@
 import React from 'react';
 import { FlatList, View, StyleSheet, Pressable } from 'react-native';
 import RepositoryItem from './RepositoryItem';
+import {Picker} from '@react-native-picker/picker';
+
 
 import { useHistory } from "react-router-native";
 
@@ -14,7 +16,7 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 
 
-export const RepositoryListContainer = ({ repositories }) => {
+export const RepositoryListContainer = ({ repositories, setSelectedFilter, selectedFilter }) => {
     const history = useHistory();
 
     const repositoryNodes = repositories
@@ -37,6 +39,26 @@ export const RepositoryListContainer = ({ repositories }) => {
         ItemSeparatorComponent={ItemSeparator}
         renderItem={renderItem}
         keyExtractor={repo => repo.id}
+        ListHeaderComponent={() => <DropPicker 
+              setSelectedFilter={setSelectedFilter}
+              selectedFilter={selectedFilter}
+              />}
       />
+    );
+  };
+
+  const DropPicker = ({setSelectedFilter, selectedFilter}) => {
+
+    return(
+        <Picker
+          style={{margin: 20}}
+          selectedValue={selectedFilter}
+          onValueChange={(itemValue) =>
+            setSelectedFilter(itemValue)
+          }>
+          <Picker.Item label="Latest repositories" value="date" />
+          <Picker.Item label="Highest rated repositories" value="highAverage" />
+          <Picker.Item label="Lowest rated repositories" value="lowAverage" />
+        </Picker>
     );
   };
