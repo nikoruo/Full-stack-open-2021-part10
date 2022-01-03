@@ -2,7 +2,7 @@
 import { GET_REPOSITORIES } from '../graphql/queries';
 import { useQuery } from '@apollo/client';
 
-const useRepositories = (sort) => {
+const useRepositories = (sort, search) => {
 
   let variables = [];
 
@@ -11,18 +11,21 @@ const useRepositories = (sort) => {
       variables = {
         "orderBy":"RATING_AVERAGE", 
         "orderDirection": "DESC",
+        "searchKeyword": search
       }; 
       break;
     case 'lowAverage':
       variables = {
         "orderBy":"RATING_AVERAGE", 
         "orderDirection": "ASC",
+        "searchKeyword": search
       }; 
       break;
     default:
       variables = {
         "orderBy":"CREATED_AT", 
         "orderDirection": "DESC",
+        "searchKeyword": search
       };
   }
 

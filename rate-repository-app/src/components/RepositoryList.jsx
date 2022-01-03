@@ -1,16 +1,31 @@
 import React, {useState} from 'react';
 import useRepositories from '../hooks/useRepositories';
 import { RepositoryListContainer } from './RepositoryListContainer';
-
+import { useHistory } from "react-router-native";
+import { useDebounce } from 'use-debounce';
 
 const RepositoryList = () => {
-  const [selectedFilter, setSelectedFilter] = useState("latest");
-  const { repositories } = useRepositories(selectedFilter);
-  console.log("selector", selectedFilter, repositories);
+
+
+  const [selectedOrder, setSelectedOrder] = useState("latest");
+  const [selectedFilter, setSelectedFilter] = useState("");
+  const [filterDebounce] = useDebounce(selectedFilter, 500);
+
+
+  const { repositories } = useRepositories(selectedOrder, filterDebounce);
+
+
+  const history = useHistory();
+
+
+  console.log("selector");
   return <RepositoryListContainer 
       repositories={repositories}
-      selectedFilter={selectedFilter} 
-      setSelectedFilter={setSelectedFilter} 
+      selectedOrder={selectedOrder} 
+      setSelectedOrder={setSelectedOrder}
+      history={history} 
+      setSelectedFilter={setSelectedFilter}
+      selectedFilter={selectedFilter}
     />;
 };
 

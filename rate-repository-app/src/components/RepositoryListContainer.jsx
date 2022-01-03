@@ -1,60 +1,84 @@
 import React from 'react';
-import { FlatList, View, StyleSheet, Pressable } from 'react-native';
+import { FlatList, View, StyleSheet, Pressable, TextInput } from 'react-native';
 import RepositoryItem from './RepositoryItem';
 import {Picker} from '@react-native-picker/picker';
-
-
-import { useHistory } from "react-router-native";
+import theme from '../theme';
 
 const styles = StyleSheet.create({
     separator: {
       height: 10,
     },
+    textInput: {
+      backgroundColor: theme.colors.repositoryItem,
+      marginBottom: 10
+    },
+    container: {
+      margin: 20
+    }
   });
   
 const ItemSeparator = () => <View style={styles.separator} />;
 
 
 
-export const RepositoryListContainer = ({ repositories, setSelectedFilter, selectedFilter }) => {
-    const history = useHistory();
+export class RepositoryListContainer extends React.Component{
+  renderHeader = () => {  
+    
+    const props = this.props;
 
-    const repositoryNodes = repositories
-      ? repositories.edges.map((edge) => edge.node)
-      : [];
+    return (
+      <View style={styles.container}>
+        <TextInput 
+          onChangeText={text => props.setSelectedFilter(text)}
+          style={styles.textInput} 
+          placeholder="Search" 
+          />
+        <DropPicker 
+          setSelectedOrder={props.setSelectedOrder}
+          selectedOrder={props.selectedOrder}
+          />        
+      </View>
+    );
+  };
+
+render(){
   
-    const renderItem = ({item}) => (
-        <Pressable onPress={() => handleClick(item)}>
-            <RepositoryItem repo={item} />
-        </Pressable>
-    ); 
+  const props = this.props;
+  const history = props.history;
 
-    const handleClick = ({id}) => {        
-        history.push(`/repositories/${id}`);
-    };
+  const repositoryNodes = props.repositories
+  ? props.repositories.edges.map((edge) => edge.node)
+  : [];
 
+  const RenderItem = ({item}) => (
+      <Pressable onPress={() => handleClick(item)}>
+          <RepositoryItem repo={item} />
+      </Pressable>
+  ); 
+
+const handleClick = ({id}) => {        
+    history.push(`/repositories/${id}`);
+};
+  
     return (
         <FlatList
         data={repositoryNodes}
         ItemSeparatorComponent={ItemSeparator}
-        renderItem={renderItem}
+        renderItem={RenderItem}
         keyExtractor={repo => repo.id}
-        ListHeaderComponent={() => <DropPicker 
-              setSelectedFilter={setSelectedFilter}
-              selectedFilter={selectedFilter}
-              />}
+        ListHeaderComponent={this.renderHeader}
       />
     );
-  };
+  }
+}
 
-  const DropPicker = ({setSelectedFilter, selectedFilter}) => {
+  const DropPicker = ({setSelectedOrder, selectedOrder}) => {
 
     return(
         <Picker
-          style={{margin: 20}}
-          selectedValue={selectedFilter}
+          selectedValue={selectedOrder}
           onValueChange={(itemValue) =>
-            setSelectedFilter(itemValue)
+            setSelectedOrder(itemValue)
           }>
           <Picker.Item label="Latest repositories" value="date" />
           <Picker.Item label="Highest rated repositories" value="highAverage" />
