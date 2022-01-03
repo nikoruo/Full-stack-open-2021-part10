@@ -6,17 +6,13 @@ import { useDebounce } from 'use-debounce';
 
 const RepositoryList = () => {
 
-
   const [selectedOrder, setSelectedOrder] = useState("latest");
   const [selectedFilter, setSelectedFilter] = useState("");
   const [filterDebounce] = useDebounce(selectedFilter, 500);
 
-
   const { repositories } = useRepositories(selectedOrder, filterDebounce);
 
-
   const history = useHistory();
-
 
   console.log("selector");
   return <RepositoryListContainer 
