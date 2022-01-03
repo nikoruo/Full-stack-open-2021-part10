@@ -38,8 +38,8 @@ const CreateReview = () => {
         console.log("onsub",{ owner, name, rating, text });
         try {
           let result = await review({ owner, name, rating, text });
-          console.log("id", result.data.createReview.repository.id);
-          history.push(`/repositories/${result.data.createReview.repository.id}`);
+          console.log("id", result);
+          history.push(`/repositories/${result.data.createReview.repositoryId}`);
         } catch (e) {
           console.log(e);
         }

@@ -11,6 +11,7 @@ export const LOGIN_USER = gql`
   }
 `;
 
+//uusi arvio
 export const CREATE_REVIEW = gql`
     mutation createReview ($repositoryName: String!, $ownerName: String!, $rating: Int!, $text: String){
         createReview(
@@ -21,9 +22,21 @@ export const CREATE_REVIEW = gql`
                 text: $text
             }
         ) {
-            repository {
-                id
+            repositoryId
+        }
+      }
+`;
+
+//uusi arvio
+export const CREATE_USER = gql`
+    mutation createUser ($username: String!, $password: String!){
+        createUser(
+            user: {
+                username: $username
+                password: $password
             }
+        ) {
+            username
         }
       }
 `;
