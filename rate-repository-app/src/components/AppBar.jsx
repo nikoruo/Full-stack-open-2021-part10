@@ -23,7 +23,10 @@ const AppBar = () => {
                 <AppBarTab text={"Repositories"} target={"/"} />
                 {login.authorizedUser === null ? 
                   <AppBarTab text={"Sign in"} target={"/signin"} /> :
-                  <AppBarTab text={"Sign out"} target={"/signout"} /> 
+                  <View style={{flexDirection: "row"}}>
+                    <AppBarTab text={"Create a review"} target={"/createreview"} />
+                    <AppBarTab text={"Sign out"} target={"/signout"} /> 
+                  </View>
                 }
             </ScrollView>
         </View>
