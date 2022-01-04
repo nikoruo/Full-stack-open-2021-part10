@@ -28,15 +28,19 @@ const styles = StyleSheet.create({
       }
 });
 
-const ReviewItem = ({review}) => {
-
+const ReviewItem = ({review, list}) => {
+    console.log(review);
     return (
         <View style={styles.flexContainerRow}>
             <View style={styles.rating}>
                 <Text fontWeight="bold" fontSize="subheading" color="primary">{review.node.rating}</Text>
             </View>
             <View style={styles.flexContainerCol}>
+                {list ?
+                 <Text fontWeight="bold" fontSize="subheading" color="textPrimary">{review.node.repository.ownerName}/{review.node.repository.name}</Text>
+                :
                 <Text fontWeight="bold" fontSize="subheading" color="textPrimary">{review.node.user.username}</Text>
+                }
                 <Text color="textSecondary">{format(new Date(review.node.createdAt), "dd.MM.yyyy")}</Text>
                 <Text>{review.node.text}</Text>
             </View>

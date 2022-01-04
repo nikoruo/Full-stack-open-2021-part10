@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 
 const useRepository = ({id}) => {
     
-  const variables = {id, "first": 8};
+  const variables = {id, "first": 6};
   const {data, loading, fetchMore, ...result} = useQuery(GET_REPOSITORY, {
     fetchPolicy: 'cache-and-network',
     variables

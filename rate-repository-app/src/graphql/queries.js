@@ -61,10 +61,29 @@ export const GET_REPOSITORY = gql`
 
 //tarkistetaan onko kirjautunut
 export const CHECK_AUTH = gql`
-  query checkAuth{
+  query checkAuth ($includeReviews: Boolean = false){
     authorizedUser {
       id
       username
+      reviews @include(if: $includeReviews) {
+        edges {
+          node {
+            id
+            text
+            rating
+            createdAt
+            repository {
+              name
+              id
+              ownerName
+            }
+            user {
+              id
+              username
+            }
+          }
+        }
+      }
     }
   }
 `;

@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 
 const AppBar = () => {
 
-  const login = useUser();
+  const login = useUser({"reviews": false});
   return (
         <View style={styles.container}>
             <ScrollView horizontal>
@@ -29,6 +29,7 @@ const AppBar = () => {
                    :
                   <View style={{flexDirection: "row"}}>
                     <AppBarTab text={"Create a review"} target={"/createreview"} />
+                    <AppBarTab text={"My reviews"} target={"/userreviews"} />
                     <AppBarTab text={"Sign out"} target={"/signout"} /> 
                   </View>
                 }
