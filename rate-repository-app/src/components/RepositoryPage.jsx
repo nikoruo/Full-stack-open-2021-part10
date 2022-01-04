@@ -17,21 +17,21 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 const ReposityView = () => {
   const { id } = useParams();
-  const { repository, loading } = useRepository({id});
-  if(id){    
-    if(loading){
-      return <View/>;
-    }
-  }  
-  console.log("RepoView", repository);
+  const { repository, fetchMore } = useRepository({id});
 
+  const onEndReach = () => {
+    fetchMore();
+  };
+  
     return (
         <FlatList
         data={repository.reviews.edges}
         ItemSeparatorComponent={ItemSeparator}
         renderItem={({item}) => <ReviewItem review={item} />}
         keyExtractor={({node}) => node.id}        
-        ListHeaderComponent={() => <RepositoryItem repository={repository} />}
+        ListHeaderComponent={() => <RepositoryItem repo={repository} />}
+        onEndReached={onEndReach}
+        onEndReachedThreshold={0.5}
       />
     );
   };

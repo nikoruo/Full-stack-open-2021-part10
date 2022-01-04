@@ -23,7 +23,7 @@ export const GET_REPOSITORIES = gql`
 
 //yksittäisen repon haku
 export const GET_REPOSITORY = gql`
-  query getRepository($id: ID!){
+  query getRepository($id: ID!, $first: Int, $after: String){
     repository(id: $id){
       id,
       ownerAvatarUrl,
@@ -35,7 +35,7 @@ export const GET_REPOSITORY = gql`
       reviewCount,
       ratingAverage,
       url,
-      reviews {
+      reviews (first: $first, after: $after){
         edges {
           node {
             id
@@ -47,6 +47,12 @@ export const GET_REPOSITORY = gql`
               username
             }
           }
+          cursor
+        }
+        pageInfo {
+          endCursor
+          startCursor
+          hasNextPage
         }
       }
     }

@@ -61,18 +61,9 @@ const styles = StyleSheet.create({
 });
 
 import { useParams } from 'react-router-native';
-import useRepository from '../hooks/useRepository';
 const RepositoryItem = ({repo}) => {
   
   const { id } = useParams();
-  
-  if(id){
-    const { repository, loading } = useRepository({id});
-    if(loading){
-      return <View/>;
-    }
-    repo=repository;
-  }  
 
   return (
       <View>

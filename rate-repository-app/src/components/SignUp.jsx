@@ -30,7 +30,6 @@ let yupSchema = yup.object().shape({
 });
 
 const CreateUser = () => {
-    console.log("Create user");
 
     let history = useHistory();
     const [user] = useSignUp();

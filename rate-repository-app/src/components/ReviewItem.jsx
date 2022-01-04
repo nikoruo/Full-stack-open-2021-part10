@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         padding:20,
         backgroundColor: theme.colors.repositoryItem,
+        height: 200
       },
       flexContainerCol: {
         flexDirection: "column",
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
 });
 
 const ReviewItem = ({review}) => {
-    console.log("reviewItem", review);
+
     return (
         <View style={styles.flexContainerRow}>
             <View style={styles.rating}>

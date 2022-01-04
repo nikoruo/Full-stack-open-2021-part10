@@ -14,7 +14,6 @@ const RepositoryList = () => {
 
   const history = useHistory();
 
-  console.log("selector");
   return <RepositoryListContainer 
       repositories={repositories}
       selectedOrder={selectedOrder} 

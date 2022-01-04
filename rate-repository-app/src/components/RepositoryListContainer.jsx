@@ -56,7 +56,7 @@ render(){
       </Pressable>
   ); 
 
-const handleClick = ({id}) => {        
+const handleClick = ({id}) => {
     history.push(`/repositories/${id}`);
 };
   
