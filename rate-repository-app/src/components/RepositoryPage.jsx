@@ -18,7 +18,11 @@ const ItemSeparator = () => <View style={styles.separator} />;
 const ReposityView = () => {
   const { id } = useParams();
   const { repository, fetchMore } = useRepository({id});
-
+     
+    if(repository===undefined){
+      return <View/>;
+    }
+    
   const onEndReach = () => {
     fetchMore();
   };
@@ -29,7 +33,7 @@ const ReposityView = () => {
         ItemSeparatorComponent={ItemSeparator}
         renderItem={({item}) => <ReviewItem review={item} />}
         keyExtractor={({node}) => node.id}        
-        ListHeaderComponent={() => <RepositoryItem repo={repository} />}
+        ListHeaderComponent={() => <RepositoryItem button="kyllä" repo={repository} />}
         onEndReached={onEndReach}
         onEndReachedThreshold={0.5}
       />

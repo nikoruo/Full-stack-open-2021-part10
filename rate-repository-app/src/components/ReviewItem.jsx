@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         padding:20,
         backgroundColor: theme.colors.repositoryItem,
-        height: 200
       },
       flexContainerCol: {
         flexDirection: "column",

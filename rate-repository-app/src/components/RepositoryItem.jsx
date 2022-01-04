@@ -60,10 +60,7 @@ const styles = StyleSheet.create({
     },
 });
 
-import { useParams } from 'react-router-native';
-const RepositoryItem = ({repo}) => {
-  
-  const { id } = useParams();
+const RepositoryItem = ({repo, button}) => {
 
   return (
       <View>
@@ -84,10 +81,12 @@ const RepositoryItem = ({repo}) => {
             <StatsItem testID="reviewCount" name="Reviews" count={repo.reviewCount}/>
             <StatsItem testID="ratingAverage" name="Rating" count={repo.ratingAverage}/>
           </View>
-          {id ? <Pressable style={styles.button} onPress={() => Linking.openURL(repo.url)}>
-                  <Text style={styles.text}>Open in GitHub</Text>    
-                </Pressable> 
-             : <></>}
+          {button==="kyllä" ? <Pressable style={styles.button} onPress={() => Linking.openURL(repo.url)}>
+                      <Text style={styles.text}>Open in GitHub</Text>    
+                    </Pressable> 
+                    : 
+                    <></>
+                  }
         </View>
       </View>
     );

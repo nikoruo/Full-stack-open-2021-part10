@@ -52,7 +52,7 @@ render(){
 
   const RenderItem = ({item}) => (
       <Pressable onPress={() => handleClick(item)}>
-          <RepositoryItem repo={item} />
+          <RepositoryItem button="ei" repo={item} />
       </Pressable>
   ); 
 
