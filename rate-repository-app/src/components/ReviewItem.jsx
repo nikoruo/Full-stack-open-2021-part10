@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
 });
 
 const ReviewItem = ({review, list}) => {
-    console.log(review);
+    
     return (
         <View style={styles.flexContainerRow}>
             <View style={styles.rating}>
